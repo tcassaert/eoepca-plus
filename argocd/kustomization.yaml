@@ -2,4 +2,4 @@
 resources:
   - infra
   - eoepca
-  - test
+#  - test
