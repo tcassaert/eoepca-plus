@@ -17,8 +17,8 @@ spec:
         releaseName: openeo-geotrellis-sparkoperator
         valueFiles:
           - $values/argocd/eoepca/openeo-geotrellis/parts/values-openeo-geotrellis-sparkoperator.yaml
-    - repoURL: https://github.com/EOEPCA/eoepca-plus
-      targetRevision: deploy-develop
+    - repoURL: https://github.com/tcassaert/eoepca-plus
+      targetRevision: openeo
       ref: values
 
   destination:
