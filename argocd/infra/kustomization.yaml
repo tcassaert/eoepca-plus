@@ -1,6 +1,6 @@
 
 resources:
   - app-sealed-secrets.yaml
-  - cert-manager
-  - harbor
-  - minio
+#  - cert-manager
+#  - harbor
+#  - minio

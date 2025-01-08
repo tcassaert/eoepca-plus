@@ -1,18 +1,18 @@
 
 resources:
-  - identity-service
-  - resource-catalogue
-  - registration-api
-  - registration-api-v1x
-  - data-access-v1x
-  - data-access
-  - zoo-dru
-  - workspace
-  - mlops
-  - application-quality
-  - portal-v1x
-  - registration-harvester-api
-  - iam
-  - application-hub
-  - resource-health
+#  - identity-service
+#  - resource-catalogue
+#  - registration-api
+#  - registration-api-v1x
+#  - data-access-v1x
+#  - data-access
+#  - zoo-dru
+#  - workspace
+#  - mlops
+#  - application-quality
+#  - portal-v1x
+#  - registration-harvester-api
+#  - iam
+#  - application-hub
+#  - resource-health
   - openeo-geotrellis
