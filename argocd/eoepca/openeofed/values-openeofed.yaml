@@ -6,6 +6,9 @@ configMaps:
     from openeo_aggregator.config import AggregatorBackendConfig
     _zk_hosts = os.environ.get("ZOOKEEPERNODES", "zk.example:2181")
 
+    BACKEND_ID_CDSE = "cdse"
+    BACKEND_ID_TERRASCOPE = "terrascope"
+
     config = AggregatorBackendConfig(
         id="openeofed-eoepca",
         capabilities_title="openeofed eoepca",
