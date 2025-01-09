@@ -6,6 +6,8 @@ metadata:
   namespace: openeo-geotrellis
 data:
   backendconfig.py: |
+    from pathlib import Path
+
     from openeogeotrellis.config import GpsBackendConfig
     from openeogeotrellis.deploy import (
         build_gps_backend_deploy_metadata,
