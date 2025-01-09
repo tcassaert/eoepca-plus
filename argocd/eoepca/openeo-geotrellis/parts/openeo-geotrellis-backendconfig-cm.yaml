@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: openeo-geotrellis
+data:
+  backendconfig.py: |
+    import os
+
+    from openeogeotrellis.config import GpsBackendConfig
+
+    config = GpsBackendConfig(
+        id="eoepca-openeo",
+        capabilities_title="EOEPCA GeoPySpark Backend",
+        capabilities_description="EOEPCA GeoPySpark Backend",
+        enable_basic_auth=True,
+        valid_basic_auth=lambda u, p: p == f"{u}123",
+    )
