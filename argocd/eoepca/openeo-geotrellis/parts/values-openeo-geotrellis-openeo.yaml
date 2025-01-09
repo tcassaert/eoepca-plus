@@ -87,6 +87,15 @@ rbac:
           - delete
           - get
           - list
+      - apiGroups:
+          - ""
+        resources:
+          - persistentvolumeclaims
+        verbs:
+          - create
+          - delete
+          - deletecollection
+          - list
   serviceAccountDriver: openeo
 volumeMounts:
   - mountPath: /opt/backend_config/
