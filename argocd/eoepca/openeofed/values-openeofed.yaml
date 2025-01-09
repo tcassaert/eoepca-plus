@@ -19,7 +19,7 @@ configMaps:
 envVars:
   ENV: "prod"
   ZOOKEEPERNODES: openeo-geotrellis-zookeeper.openeo-geotrellis.svc.cluster.local:2181
-#  OPENEO_BACKEND_CONFIG: "/conf/openeofed.conf.py"
+  OPENEO_BACKEND_CONFIG: "/conf/openeofed.conf.py"
   GUNICORN_CMD_ARGS: "--bind=0.0.0.0:8080 --workers=10 --threads=1 --timeout=900"
 existingConfigMaps: false
 fullnameOverride: openeofed
