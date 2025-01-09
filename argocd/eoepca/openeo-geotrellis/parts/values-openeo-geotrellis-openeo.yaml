@@ -2,7 +2,37 @@
 image: vito-docker.artifactory.vgt.vito.be/openeo-geotrellis-kube
 imageVersion: latest
 sparkVersion: 3.2.0
-type: Java
+configMaps:
+  backendConfig: |
+    from pathlib import Path
+
+    from openeogeotrellis.config import GpsBackendConfig
+    from openeogeotrellis.deploy import (
+        build_gps_backend_deploy_metadata,
+        find_geotrellis_jars,
+    )
+
+
+    capabilities_deploy_metadata = build_gps_backend_deploy_metadata(
+        packages=[
+            "openeo",
+            "openeo_driver",
+            "openeo-geopyspark",
+            "openeo_udf",
+            "geopyspark",
+        ],
+        jar_paths=find_geotrellis_jars(extra_search_locations=[Path("/opt")]),
+    )
+
+
+    config = GpsBackendConfig(
+        id="eoepca-openeo",
+        capabilities_title="EOEPCA GeoPySpark Backend",
+        capabilities_description="EOEPCA GeoPySpark Backend",
+        capabilities_deploy_metadata=capabilities_deploy_metadata,
+        enable_basic_auth=True,
+        valid_basic_auth=lambda u, p: p == f"{u}123",
+    )
 driver:
   env:
     KUBE: "true"
@@ -17,6 +47,7 @@ driver:
 executor:
   env:
     PYTHONPATH: $PYTHONPATH:/opt/tensorflow/python38/2.3.0/:/opt/openeo/lib/python3.8/site-packages/
+existingConfigMaps: false
 fileDependencies:
   - local:///opt/layercatalog.json
   - local:///opt/log4j2.xml
@@ -102,5 +133,8 @@ volumeMounts:
     name: backend-config-configmap
 volumes:
   - configMap:
-      name: backend-config
+      name: openeo-geotrellis-sparkapplication
+      items:
+        - key: backendconfig.py
+          path: backendconfig.py
     name: backend-config-configmap
