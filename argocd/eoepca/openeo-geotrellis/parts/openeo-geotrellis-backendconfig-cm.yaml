@@ -7,6 +7,11 @@ metadata:
 data:
   backendconfig.py: |
     from openeogeotrellis.config import GpsBackendConfig
+    from openeogeotrellis.deploy import (
+        build_gps_backend_deploy_metadata,
+        find_geotrellis_jars,
+    )
+
 
     capabilities_deploy_metadata = build_gps_backend_deploy_metadata(
         packages=[
