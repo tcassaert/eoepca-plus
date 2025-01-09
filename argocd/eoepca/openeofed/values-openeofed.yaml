@@ -8,7 +8,7 @@ configMaps:
 
     config = AggregatorBackendConfig(
         id="openeofed-eoepca",
-        capabilities_title="openeofed eoepca"
+        capabilities_title="openeofed eoepca",
         aggregator_backends={
             BACKEND_ID_CDSE: "https://openeo.dataspace.copernicus.eu/openeo/1.1/",
             BACKEND_ID_TERRASCOPE: "https://openeo-cdse.vito.be/openeo/1.1/",
