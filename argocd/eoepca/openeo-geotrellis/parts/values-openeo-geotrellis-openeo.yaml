@@ -65,11 +65,27 @@ rbac:
       - apiGroups:
           - ""
         resources:
+          - services
+        verbs:
+          - deletecollection
+          - list
+      - apiGroups:
+          - ""
+        resources:
           - configmaps
         verbs:
           - create
           - delete
           - deletecollection
+          - list
+      - apiGroups:
+          - sparkoperator.k8s.io
+        resources:
+          - sparkapplications
+        verbs:
+          - create
+          - delete
+          - get
           - list
   serviceAccountDriver: openeo
 volumeMounts:
