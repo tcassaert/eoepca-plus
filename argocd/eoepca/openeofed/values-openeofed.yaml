@@ -4,6 +4,7 @@ envVars:
   ZOOKEEPERNODES: openeo-geotrellis-zookeeper.openeo-geotrellis.svc.cluster.local:2181
 #  OPENEO_BACKEND_CONFIG: "/conf/openeofed.conf.py"
   GUNICORN_CMD_ARGS: "--bind=0.0.0.0:8080 --workers=10 --threads=1 --timeout=900"
+fullnameOverride: openeofed
 image:
   pullPolicy: Always
   repository: vito-docker.artifactory.vgt.vito.be/openeo-aggregator
