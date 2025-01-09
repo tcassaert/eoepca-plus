@@ -133,7 +133,7 @@ volumeMounts:
     name: backend-config-configmap
 volumes:
   - configMap:
-      name: openeo-geotrellis-sparkapplication
+      name: openeo-geotrellis-openeo-sparkapplication
       items:
         - key: backendconfig.py
           path: backendconfig.py
