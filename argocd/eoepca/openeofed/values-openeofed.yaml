@@ -33,7 +33,6 @@ configMaps:
             "eoepca": "https://openeo.develop.eoepca.org/openeo/1.2/",
         },
     )
-
 envVars:
   ENV: "prod"
   ZOOKEEPERNODES: openeo-geotrellis-zookeeper.openeo-geotrellis.svc.cluster.local:2181
