@@ -1,24 +1,39 @@
 ---
 configMaps:
   conf: |
-    import os
-
     from openeo_aggregator.config import AggregatorBackendConfig
-    _zk_hosts = os.environ.get("ZOOKEEPERNODES", "zk.example:2181")
+    from openeo_driver.users.oidc import OidcProvider
 
-    BACKEND_ID_CDSE = "cdse"
-    BACKEND_ID_TERRASCOPE = "terrascope"
+    oidc_providers = [
+        OidcProvider(
+            id="egi-dev",
+            title="EGI Check-in (dev)",
+            issuer="https://aai-dev.egi.eu/auth/realms/egi/",
+            default_clients=[
+                {
+                    "id": "openeo-eoepca-demo",
+                    "grant_types": [
+                        "authorization_code+pkce",
+                        "urn:ietf:params:oauth:grant-type:device_code+pkce",
+                        "refresh_token",
+                    ],
+                    "redirect_urls": ["https://editor.openeo.org"],
+                }
+            ],
+        ),
+    ]
 
     config = AggregatorBackendConfig(
-        id="openeofed-eoepca",
-        capabilities_title="openeofed eoepca",
+        id="openeo-eoepca-aggregator-demo",
+        capabilities_title="openEO/EOEPCA+ Federation Demo",
+        capabilities_description="openEO demo federation service for EOEPCA+",
+        oidc_providers=oidc_providers,
         aggregator_backends={
-            BACKEND_ID_CDSE: "https://openeo.dataspace.copernicus.eu/openeo/1.1/",
-            BACKEND_ID_TERRASCOPE: "https://openeo-cdse.vito.be/openeo/1.1/",
+            "terrascope": "https://openeo-dev.vito.be/openeo/1.2/",
+            "eoepca": "https://openeo.develop.eoepca.org/openeo/1.2/",
         },
-        zookeeper_prefix="/openeo/openeofed/",
-        partitioned_job_tracking={"zk_hosts": _zk_hosts},
     )
+
 envVars:
   ENV: "prod"
   ZOOKEEPERNODES: openeo-geotrellis-zookeeper.openeo-geotrellis.svc.cluster.local:2181
