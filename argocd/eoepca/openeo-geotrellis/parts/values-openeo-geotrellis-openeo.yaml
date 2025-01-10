@@ -5,7 +5,6 @@ sparkVersion: 3.2.0
 configMaps:
   backendConfig: |
     from pathlib import Path
-
     from openeogeotrellis.config import GpsBackendConfig
     from openeogeotrellis.deploy import (
         build_gps_backend_deploy_metadata,
