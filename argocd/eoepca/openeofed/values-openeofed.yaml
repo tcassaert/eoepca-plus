@@ -4,6 +4,7 @@ configMaps:
     from openeo_aggregator.config import AggregatorBackendConfig
     from openeo_driver.users.oidc import OidcProvider
 
+
     oidc_providers = [
         OidcProvider(
             id="egi-dev",
