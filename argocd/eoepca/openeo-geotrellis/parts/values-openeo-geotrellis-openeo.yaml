@@ -35,7 +35,6 @@ driver:
   env:
     KUBE: "true"
     KUBE_OPENEO_API_PORT: "50001"
-    OPENEO_BACKEND_CONFIG: /opt/backend_config/backendconfig.py
     PYTHONPATH: $PYTHONPATH:/opt/tensorflow/python38/2.3.0/:/opt/openeo/lib/python3.8/site-packages/
     SPARK_LOCAL_IP: "127.0.0.1"
     ZOOKEEPERNODES: openeo-geotrellis-zookeeper.openeo-geotrellis.svc.cluster.local:2181
@@ -126,13 +125,3 @@ rbac:
           - deletecollection
           - list
   serviceAccountDriver: openeo
-volumeMounts:
-  - mountPath: /opt/backend_config/
-    name: backend-config-configmap
-volumes:
-  - configMap:
-      name: openeo-geotrellis-openeo-sparkapplication
-      items:
-        - key: backendconfig.py
-          path: backendconfig.py
-    name: backend-config-configmap
